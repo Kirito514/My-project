@@ -1,0 +1,48 @@
+@import url(style-font.css);
+
+*{
+   padding: 0;
+   margin: 0;
+}
+
+body {
+   background-image: url(../images/backgraund.jpg);
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   backdrop-filter: blur(10px);
+ }
+ 
+.container {
+   width: 100vw;   
+   height: 100vh; 
+   background: rgb(255,255,255);
+   background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.4) 100%);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+
+.title {
+   width: 810px;
+   font-family: 'RobotoMono-Medium';
+   text-align: center;
+   font-size: 64px;
+   color: #FFFFFF ;
+   /* border: 1px solid red; */
+}
+
+.title span {
+   font-family: 'Merienda-Regular';
+}
+
+.time {
+   width: 850px;
+   height: 160px;
+   /* margin-top: 80px; */
+   gap: 80px;
+   border-radius: 10px;
+   border: 1px solid #ebebebc8;
+   background: rgba(255, 255, 255, 0.3);
+}
