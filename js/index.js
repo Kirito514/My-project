@@ -1,0 +1,60 @@
+// Countdown Timer Script with Leading Zeros
+function startCountdown() {
+    const initialDays = parseInt(document.getElementById('days').textContent);
+    const initialHours = parseInt(document.getElementById('hours').textContent);
+    const initialMinutes = parseInt(document.getElementById('minutes').textContent);
+    const initialSeconds = parseInt(document.getElementById('seconds').textContent);
+
+    const countdownTime = ((initialDays * 24 * 60 * 60) + (initialHours * 60 * 60) + (initialMinutes * 60) + initialSeconds) * 1000;
+    const countdownDate = new Date().getTime() + countdownTime;
+
+    function updateCountdown() {
+        const currentTime = new Date().getTime();
+        const distance = countdownDate - currentTime;
+
+        if (distance < 0) {
+            clearInterval(interval);
+            document.querySelector('.time').innerHTML = '<p>Countdown Ended</p>';
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
+    }
+
+    const interval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+}
+
+window.onload = startCountdown;
+
+// Notification
+function toggleButton() {
+    const emailInput = document.getElementById('emailInput');
+    const sendBtn = document.getElementById('sendBtn');
+    if (emailInput.value.trim() !== '') {
+        sendBtn.disabled = false;
+        sendBtn.classList.remove('disabled');
+    } else {
+        sendBtn.disabled = true;
+        sendBtn.classList.add('disabled');
+    }
+}
+
+function showNotification() {
+    const emailInput = document.getElementById('emailInput');
+    const notification = document.getElementById('notification');
+    notification.classList.add('show');
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 3000);
+    emailInput.value = ''; // Input maydonini tozalash
+    toggleButton(); // Tugmani yangilash
+}

@@ -1,9 +1,29 @@
 @font-face {
-   font-family:'RobotoMono-Medium';
+   font-family: 'RobotoMono-Medium';
    src: url(../fonts/Roboto-Mono/static/RobotoMono-Medium.ttf);
+}
+
+@font-face {
+   font-family: 'RobotoMono-Regular';
+   src: url(../fonts/Roboto-Mono/static/RobotoMono-Regular.ttf);
 }
 
 @font-face {
    font-family: 'Merienda-Regular';
    src: url(../fonts/Meriende/static/Merienda-Regular.ttf);
+}
+
+@font-face {
+   font-family: 'Inter-Bold';
+   src: url(../fonts/Inter/static/Inter_18pt-Bold.ttf);
+}
+
+@font-face {
+   font-family: 'Inter-Regular';
+   src: url(../fonts/Inter/static/Inter_18pt-Regular.ttf);
+}
+
+@font-face {
+   font-family: 'Inter-Medium';
+   src: url(../fonts/Inter/static/Inter_18pt-Medium.ttf);
 }
