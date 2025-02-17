@@ -12,6 +12,10 @@ body {
    background-position: center;
    background-repeat: no-repeat;
    backdrop-filter: blur(10px);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
 }
 
 .container {
@@ -100,6 +104,45 @@ body {
 .time-box span {
    font-size: 100px;
    margin-left: 15px;
+}
+
+#endedMessage {
+   width: 800px;
+   height: 380px;
+   border-radius: 10px;
+   background: #FFFFFF30;
+   color: #FFFFFF;
+}
+
+#endedMessage h1 {
+   font-family: 'Ubuntu-Bold';
+   font-size: 30px;
+   text-align: center;
+   margin-top: 35px;
+}
+
+#endedMessage p {
+   width: 760px;
+   margin-left: 22px;
+   margin-top: 20px;
+   font-size: 20px;
+   font-family: 'Inter-Regular';
+   text-align: justify;
+   color: #FFFFFF98;
+}
+
+#endedMessage button {
+   width: 150px;
+   height: 60px;
+   border-radius: 10px;
+   margin-left: 324px;
+   margin-top: 45px;
+   text-align: center;
+   background: #FFFFFF30;
+   border: 1px solid #EBEBEB50;
+   font-family: 'Ubuntu-Bold';
+   font-size: 18px;
+   color: #FFFFFF;
 }
 
 .email-inp {

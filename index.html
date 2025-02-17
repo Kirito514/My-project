@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My-project | Platform</title>
   <link rel="stylesheet" href="style/style.css">
 </head>
+
 <body>
   <div class="container">
     <p class="title">
@@ -13,12 +15,13 @@
     </p>
     <div id="notification" class="notification">
       <img src="images/icons/check.png" alt="check">
-      Email has been successfully verified</div>
+      Email has been successfully verified
+    </div>
     <div class="time">
-      <div class="time-box"><span id="days">10</span>day</div>
-      <div class="time-box"><span id="hours">02</span>hour</div>
-      <div class="time-box"><span id="minutes">50</span>minut</div>
-      <div class="time-box"><span id="seconds">17</span>second</div>
+      <div class="time-box"><span id="days">00</span>day</div>
+      <div class="time-box"><span id="hours">00</span>hour</div>
+      <div class="time-box"><span id="minutes">00</span>minut</div>
+      <div class="time-box"><span id="seconds">05</span>second</div>
     </div>
     <form class="email-inp" action="" method="post" name="notify">
       <input type="email" id="emailInput" placeholder="Notify me" oninput="toggleButton()">
@@ -41,6 +44,15 @@
       </ul>
     </section>
   </div>
-  <script src="js/index.js"></script>
+
+  <!-- ⬇️ Yangi div container'dan tashqarida bo‘lishi kerak -->
+  <div id="endedMessage"  style="display: none;">
+    <h1>Countdown Ended! 🎉</h1>
+    <p>Congratulations! The moment you've been eagerly anticipating has finally arrived. Our platform is now officially live, opening up endless possibilities for you to embark on your journey, explore exciting new projects, and collaborate seamlessly with your team. Join us today and be part of something bigger—where creativity meets opportunity, and dreams turn into reality! 🚀✨</p>
+    <button type="button"><a href="#">Sign Up</a></button>
+  </div>
+
+    <script src="js/index.js"></script>
 </body>
+
 </html>

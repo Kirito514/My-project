@@ -27,3 +27,8 @@
    font-family: 'Inter-Medium';
    src: url(../fonts/Inter/static/Inter_18pt-Medium.ttf);
 }
+
+@font-face {
+   font-family: 'Ubuntu-Bold';
+   src: url(../fonts/Ubuntu/Ubuntu-Bold.ttf);
+}

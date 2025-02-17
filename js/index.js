@@ -14,9 +14,13 @@ function startCountdown() {
 
         if (distance < 0) {
             clearInterval(interval);
-            document.querySelector('.time').innerHTML = '<p>Countdown Ended</p>';
-            return;
-        }
+        
+            // ⬇️ Container'ni butunlay yashirish
+            document.querySelector('.container').style.display = 'none';
+        
+            // ⬇️ "Countdown Ended!" xabarini chiqarish
+            document.getElementById('endedMessage').style.display = 'block';
+        }        
 
         const days = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
