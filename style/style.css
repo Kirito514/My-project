@@ -237,7 +237,7 @@ form {
 .sign-up {
    width: 100vw;
    height: 100vh;
-   position: relative;
+   /* position: relative;   */
    background: rgb(255, 255, 255);
    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.4) 100%);
 }
@@ -264,7 +264,7 @@ form {
    justify-content: center;
    align-items: center;
    flex-basis: 450px;
-   margin: 15px 15px 15px 130px;
+   padding: 15px 15px 15px 180px;
    text-align: center;
    color: #FFFFFF;
 }
