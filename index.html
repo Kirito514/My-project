@@ -20,8 +20,8 @@
     <div class="time">
       <div class="time-box"><span id="days">00</span>day</div>
       <div class="time-box"><span id="hours">00</span>hour</div>
-      <div class="time-box"><span id="minutes">00</span>minut</div>
-      <div class="time-box"><span id="seconds">05</span>second</div>
+      <div class="time-box"><span id="minutes">01</span>minut</div>
+      <div class="time-box"><span id="seconds">00</span>second</div>
     </div>
     <form class="email-inp" action="" method="post" name="notify">
       <input type="email" id="emailInput" placeholder="Notify me" oninput="toggleButton()">
@@ -74,12 +74,25 @@
           <img src="images/icons/lock.png" alt="">
           <input type="password" placeholder="Type your password">
         </div>
+        <aside class="terms">
+          <input type="checkbox" id="terms-checkbox">
+        <label for="terms-checkbox">
+            By creating an account means you agree to the 
+            <strong>Terms and Conditions</strong>, and our <strong>Privacy Policy</strong>
+        </label>
+        </aside>
+        <button type="submit" class="register-btn">Register</button>
       </form>
+      <p class="alt-login-text">or do it via other accounts</p>
 
+      <form class="social-login">
+          <button class="social-btn"><img src="images/socials/google.png" alt="Google"></button>
+          <button class="social-btn"><img class="social-btn-apple" src="images/socials/apple.png" alt="Apple"></button>
+          <button class="social-btn"><img src="images/socials/github.png" alt="GitHub"></button>
+      </form>
     </div>
   </div>
 
   <script src="js/index.js"></script>
 </body>
-
 </html>
