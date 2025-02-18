@@ -232,33 +232,25 @@ form {
 .sign-up {
    display: none;
    flex-direction: row;
-}
-
-.sign-up {
    width: 100vw;
    height: 100vh;
-   /* position: relative;   */
-   background: rgb(255, 255, 255);
    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.4) 100%);
 }
 
 .left-side {
    padding: 15px;
-
+   flex-shrink: 0;
 }
 
 .left-side-img {
    width: 700px;
-   min-width: 700px;
+   object-fit: cover;
    height: 100%;
-   /* position: absolute; */
    border-radius: 15px;
-
 }
 
 .right-side {
    width: 930px;
-   /* border: 1px solid red; */
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -272,7 +264,6 @@ form {
 .side-title {
    font-size: 36px;
    font-family: 'RobotoMono-Medium';
-   /* margin-top: 82px; */
 }
 
 .side-title-2 {
@@ -281,24 +272,54 @@ form {
    margin-top: 2px;
 }
 
-.sign-up-inp input {
-   width: 450px;
+.sign-up-inp div {
+   position: relative;
+   width: 500px;
    height: 50px;
-   margin-top: 25px;
-   padding-left: 25px;
+   margin-top: 20px;
    border-radius: 30px;
-   color: #FFFFFF;
    background: #FFFFFF30;
    border: 1px solid #EBEBEB75;
-   
+   display: flex;
+   align-items: center;
 }
 
-.sign-up-inp input::placeholder {
-   font-size: 13px;
-   font-family: 'Inter-Medium';
-   color: #FFFFFF50;
-}
-
-.sign-up-inp input:nth-child(1) {
+.sign-up-inp div:nth-child(1) {
    margin-top: 55px;
 }
+
+.sign-up-inp div::before {
+   content: "";
+   position: absolute;
+
+   width: 52px;
+   height: 100%;
+   background: rgba(255, 255, 255, 0.2);
+   border-top-left-radius: 30px;
+   border-bottom-left-radius: 30px;
+}
+
+.sign-up-inp div img {
+   position: absolute;
+   left: 16px;
+   width: 22px;
+   height: 24px;
+   z-index: 1;
+}
+
+.sign-up-inp div input {
+   flex: 1;
+   height: 100%;
+   font-size: 14px;
+   background: transparent;
+   color: #FFFFFF;
+   font-family: 'Inter-Medium';
+   padding-left: 80px;
+}
+
+.sign-up-inp div input::placeholder {
+   font-size: 13px;
+   font-family: 'Inter-Medium';
+   color: #FFFFFF80;
+}
+
