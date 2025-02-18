@@ -198,7 +198,7 @@ form {
 .social h6 {
    font-family: 'Inter-Regular';
    font-size: 13px;
-   letter-spacing: 5%;
+   letter-spacing: 2px;
    color: #FFFFFF70;
    margin-top: 55px;
    margin-bottom: 25px;
@@ -225,4 +225,80 @@ form {
 .networks img {
    width: 30px;
    height: 30px;
+}
+
+/* Sign-Up */
+
+.sign-up {
+   display: none;
+   flex-direction: row;
+}
+
+.sign-up {
+   width: 100vw;
+   height: 100vh;
+   position: relative;
+   background: rgb(255, 255, 255);
+   background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.4) 100%);
+}
+
+.left-side {
+   padding: 15px;
+
+}
+
+.left-side-img {
+   width: 700px;
+   min-width: 700px;
+   height: 100%;
+   /* position: absolute; */
+   border-radius: 15px;
+
+}
+
+.right-side {
+   width: 930px;
+   /* border: 1px solid red; */
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   flex-basis: 450px;
+   margin: 15px 15px 15px 130px;
+   text-align: center;
+   color: #FFFFFF;
+}
+
+.side-title {
+   font-size: 36px;
+   font-family: 'RobotoMono-Medium';
+   /* margin-top: 82px; */
+}
+
+.side-title-2 {
+   font-size: 26px;
+   font-family: 'RobotoMono-Medium';
+   margin-top: 2px;
+}
+
+.sign-up-inp input {
+   width: 450px;
+   height: 50px;
+   margin-top: 25px;
+   padding-left: 25px;
+   border-radius: 30px;
+   color: #FFFFFF;
+   background: #FFFFFF30;
+   border: 1px solid #EBEBEB75;
+   
+}
+
+.sign-up-inp input::placeholder {
+   font-size: 13px;
+   font-family: 'Inter-Medium';
+   color: #FFFFFF50;
+}
+
+.sign-up-inp input:nth-child(1) {
+   margin-top: 55px;
 }
