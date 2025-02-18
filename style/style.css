@@ -426,6 +426,6 @@ input[type="checkbox"]:checked::before {
 }
 
 .sign-up-inp div:focus-within {
-   background: #FFFFFF30;
+   background: #FFFFFF20;
    border: 2px solid #FFFFFF; 
 }
