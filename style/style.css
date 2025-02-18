@@ -45,7 +45,7 @@ body {
 }
 
 .notification {
-   width: 355px;
+   width: 330px;
    height: 35px;
    position: fixed;
    top: -50px;
@@ -60,6 +60,7 @@ body {
    z-index: 1000;
    font-family: 'Inter-Medium';
    font-size: 15px;
+   margin-top: -1px;
 }
 
 .notification img {
@@ -67,7 +68,8 @@ body {
    height: 24px;
    position: relative;
    margin-right: 4px;
-   top: -4px;
+   margin-left: -4px;
+   top: -5.2px;
 }
 
 .show {
