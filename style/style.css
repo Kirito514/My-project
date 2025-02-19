@@ -52,15 +52,20 @@ body {
    left: 50%;
    transform: translateX(-50%);
    background-color: #FFFFFF40;
-   color: white;
    border: 1px solid #EBEBEB80;
    padding: 10px;
    border-radius: 20px;
    transition: top 0.5s ease-in-out;
    z-index: 1000;
-   font-family: 'Inter-Medium';
+   display: flex;
+}
+
+.notification p {
    font-size: 15px;
-   margin-top: -1px;
+   font-family: 'Inter-Medium';
+   margin-left: 5px;
+   color: white;
+   
 }
 
 .notification img {
@@ -242,22 +247,36 @@ form {
 /* Sign-Up */
 
 .sign-up {
+   width: 100vw;
+   height: 100vh;
    display: none;
    flex-direction: row;
-   width: 100%;
-   height: 100%;
-   background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.4) 100%);
+   justify-content: center;
+   align-items: center;
+   background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%);
 }
 
 .left-side {
-   padding: 15px;
+   margin: 15px;
+   margin-left: -130px;
    flex-shrink: 0;
+}
+
+.left-side span {
+   width: 146px;
+   height: 35px;
+   font-size: 24px;
+   color: #ffffff;
+   font-family: 'Merienda-Regular';
+   position: fixed;
+   top: 30px;
+   left: 35px;
 }
 
 .left-side-img {
    width: 700px;
+   height: 675px;
    object-fit: cover;
-   height: 100%;
    border-radius: 15px;
 }
 
@@ -268,7 +287,7 @@ form {
    justify-content: center;
    align-items: center;
    flex-basis: 450px;
-   padding: 15px 15px 15px 180px;
+   padding: 15px 15px 15px 150px;
    text-align: center;
    color: #FFFFFF;
 }
@@ -380,12 +399,16 @@ input[type="checkbox"]:checked::before {
    margin-left: 10px;
 }
 
-.sign-up-inp strong {
+.sign-up-inp a {
    color: #FFFFFF80;
 }
 
+.sign-up-inp a:hover{
+   color: #FFFFFF;
+}
+
 .register-btn {
-   width: 220px;
+   width: 180px;
    height: 50px;
    margin-top: 35px;
    border-radius: 10px;
@@ -395,6 +418,21 @@ input[type="checkbox"]:checked::before {
    background: #FFFFFF40;
 }
 
+.login-btn {
+   width: 180px;
+   height: 50px;
+   margin-top: 35px;
+   border-radius: 10px;
+   background: #FFFFFF40;
+}
+
+.login-btn a {
+   font-size: 17px;
+   font-family: 'Ubuntu-Medium';
+   color: #FFFFFF;
+   margin-left: 10px;
+}
+
 .alt-login-text {
    font-size: 14px;
    font-family: 'Inter-Regular';
@@ -402,7 +440,7 @@ input[type="checkbox"]:checked::before {
    margin-top: 30px;
 }
 
-.social-login {
+.social-sign-up {
    margin-top: 30px;
 }
 
@@ -428,4 +466,15 @@ input[type="checkbox"]:checked::before {
 .sign-up-inp div:focus-within {
    background: #FFFFFF20;
    border: 2px solid #FFFFFF; 
+}
+
+.log-in {
+   display: none;
+   width: 100vw;
+   height: 100vh;
+   display: none;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%);
 }

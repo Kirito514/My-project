@@ -15,17 +15,18 @@
     </p>
     <div id="notification" class="notification">
       <img src="images/icons/check.png" alt="check">
-      Email has been successfully verified
+      <p>Email has been successfully verified</p>
     </div>
+
     <div class="time">
       <div class="time-box"><span id="days">00</span>day</div>
       <div class="time-box"><span id="hours">00</span>hour</div>
-      <div class="time-box"><span id="minutes">00</span>minut</div>
-      <div class="time-box"><span id="seconds">15</span>second</div>
+      <div class="time-box"><span id="minutes">01</span>minut</div>
+      <div class="time-box"><span id="seconds">05</span>second</div>
     </div>
-    <form class="email-inp" action="" method="post" name="notify">
-      <input type="email" id="emailInput" placeholder="Notify me" oninput="toggleButton()">
-      <button class="send-btn disabled" id="sendBtn" type="button" onclick="showNotification()" disabled>
+    <form class="email-inp" id="emailForm">
+      <input type="email" id="emailInput" placeholder="Notify me">
+      <button class="send-btn" id="sendBtn" type="button">
         <img src="images/icons/email.png" alt="mail">
       </button>
     </form>
@@ -56,6 +57,7 @@
 
   <div class="sign-up">
     <div class="left-side">
+      <span>My Project’s</span>
       <img class="left-side-img" src="images/backgraund.jpg" alt="">
     </div>
     <div class="right-side">
@@ -76,23 +78,34 @@
         </div>
         <aside class="terms">
           <input type="checkbox" id="terms-checkbox">
-        <label for="terms-checkbox">
-            By creating an account means you agree to the 
-            <strong>Terms and Conditions</strong>, and our <strong>Privacy Policy</strong>
-        </label>
+          <label for="terms-checkbox">
+            By creating an account means you agree to the
+            <a href="#">Terms and Conditions</a>, and our <a href="#">Privacy Policy</a>
+          </label>
         </aside>
         <button type="submit" class="register-btn">Register</button>
+        <button type="button" class="login-btn" id="login-btn"><a href="#">Back to home</a></button>
       </form>
       <p class="alt-login-text">or do it via other accounts</p>
 
-      <form class="social-login">
-          <button class="social-btn"><img src="images/socials/google.png" alt="Google"></button>
-          <button class="social-btn"><img class="social-btn-apple" src="images/socials/apple.png" alt="Apple"></button>
-          <button class="social-btn"><img src="images/socials/github.png" alt="GitHub"></button>
+      <form class="social-sign-up">
+        <button class="social-btn" id="google-sign-up">
+          <img src="images/socials/google.png" alt="Google">
+        </button>
+        <button class="social-btn" id="apple-sign-up">
+          <img class="social-btn-apple" src="images/socials/apple.png" alt="Apple">
+        </button>
+        <button class="social-btn" id="github-sign-up">
+          <img src="images/socials/github.png" alt="GitHub">
+        </button>
       </form>
     </div>
   </div>
 
+  <!-- Log in -->
+  <div class="log-in" style="display: none;"></div>
+
   <script src="js/index.js"></script>
 </body>
+
 </html>
