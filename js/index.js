@@ -1,5 +1,9 @@
-// Linklarni ko'rsatish
 
+// Sahifa ochilganda linklarni tekshirish
+showPageFromURL();
+
+
+// Sahifa yuklanganda to‘g‘ri sahifani ko‘rsatish
 function showPageFromURL() {
     const page = window.location.hash.replace("#", "");
 
@@ -15,9 +19,13 @@ function showPageFromURL() {
     } else if (page === "ended") {
         document.querySelector("#endedMessage").style.display = "block";
     } else {
-        document.querySelector(".container").style.display = "flex"; // Asosiy sahifa doim ochiladi
+        document.querySelector(".container").style.display = "flex";
     }
 }
+
+// Hash o‘zgarsa, sahifa o‘zgarishi
+window.addEventListener("hashchange", showPageFromURL);
+
 
 // Sahifa yangilansa bosh sahifa chiqishi uchun
 window.addEventListener("DOMContentLoaded", showPageFromURL);
@@ -92,34 +100,51 @@ function startCountdown() {
 
 window.onload = startCountdown;
 
-//Notification
+// Notification
 
 document.addEventListener("DOMContentLoaded", function () {
     const notification = document.getElementById("notification");
-    const notifIcon = document.querySelector("#notification img");
-    const notifMessage = document.querySelector("#notification p");
+    const notifIcon = notification.querySelector("img");
+    const notifMessage = notification.querySelector("p");
 
     function showNotification(message, isSuccess) {
-        notifIcon.src = `images/icons/${isSuccess ? 'check.png' : 'error.png'}`;
-        notifIcon.alt = isSuccess ? "Success" : "Error";
         notifMessage.textContent = message;
-
-        // Bildirishnomani ekranga chiqarish
+        notifIcon.src = isSuccess ? "check.png" : "error.png";
+        notifIcon.style.display = "inline";
+        notification.classList.toggle("success", isSuccess);
         notification.classList.add("show");
 
-        // 3 soniyadan keyin bildirishnomani yashirish
         setTimeout(() => {
             notification.classList.remove("show");
         }, 3000);
     }
 
-    // TEST UCHUN — "Yuborish" tugmasiga bosilganda bildirishnoma chiqadi
-    document.getElementById("sendBtn").addEventListener("click", function () {
-        console.log("Email jo'natildi!"); // Consolga xabar chiqadi
-        showNotification("Email has been successfully verified", true);
+    document.getElementById("sendBtn").addEventListener("click", async function () {
+        let emailInput = document.getElementById("emailInput");
+        let email = emailInput.value.trim();
+
+        if (email === "") {
+            showNotification("Please enter an email.", false);
+            return;
+        }
+
+        try {
+            let response = await fetch("http://localhost:5000/save-email", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email })
+            });
+
+            let data = await response.json();
+            if (!data.success) throw new Error(data.message);
+
+            showNotification("Email has been successfully verified", true);
+            emailInput.value = "";
+        } catch (error) {
+            showNotification("An error occurred. Please try again.", false);
+        }
     });
 });
-
 
 // Emailni emails.json ga jo'natish
 
@@ -149,8 +174,6 @@ document.getElementById("sendBtn").addEventListener("click", async function () {
     }
 });
 
-
-
 // Sign-upga o'tish uchun
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -172,25 +195,110 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
 // Log inga o'tish uchun
-
+// Sign-upga qaytish uchun
 document.addEventListener("DOMContentLoaded", function () {
-    const loginButton = document.querySelector("#login-btn"); // "Back to home" tugmasi
+    const signUpBtn = document.querySelector(".sign-up-btn"); // Sign Up tugmasi
+    const backToHomeBtn = document.querySelector(".login-btn"); // "Back to home" tugmasi
     const signUpDiv = document.querySelector(".sign-up"); // Sign-up bo‘limi
     const loginDiv = document.querySelector(".log-in"); // Log-in bo‘limi
     const mainContainer = document.querySelector(".container"); // Asosiy container
-    const endedMessage = document.querySelector("#endedMessage"); // Tugash xabari
 
-    loginButton.addEventListener("click", function (event) {
-        event.preventDefault(); // `<a>` bosilganda sahifa qayta yuklanmasligi uchun
+    signUpBtn.addEventListener("click", function (event) {
+        event.preventDefault();
 
-        // Barcha bo‘limlarni yashiramiz
+        // Hamma bo'limlarni yashiramiz
         mainContainer.style.display = "none";
-        endedMessage.style.display = "none";
-        signUpDiv.style.display = "none";
+        loginDiv.style.display = "none";
 
-        // Faqatgina log-in bo‘limini ko‘rsatamiz
-        loginDiv.style.display = "flex"; // Yoki kerakli `display` qo‘shing
+        // Sign-up bo‘limini ko‘rsatamiz
+        signUpDiv.style.display = "flex";
+    });
+
+    backToHomeBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        // Hamma bo'limlarni yashiramiz
+        signUpDiv.style.display = "none";
+        mainContainer.style.display = "none";
+
+        // Log-in bo‘limini ko‘rsatamiz
+        loginDiv.style.display = "flex";
     });
 });
+
+
+// Notification elementlari
+const notification = document.getElementById("notification");
+const notifMessage = notification.querySelector("p");
+const emailInput = document.getElementById("emailInput");
+const sendBtn = document.getElementById("sendBtn");
+
+function showNotification(message, isSuccess) {
+    const notification = document.getElementById("notification");
+    const notifMessage = notification.querySelector("p");
+
+    // Xabarni yangilash
+    notifMessage.textContent = message;
+
+    // Oldingi klasslarni olib tashlash
+    notification.classList.remove("success", "error");
+
+    // Yangi klass qo'shish (yashil yoki qizil)
+    if (isSuccess) {
+        notification.classList.add("success");
+    } else {
+        notification.classList.add("error");
+    }
+
+    // Notificationni ko‘rsatish
+    notification.classList.add("show");
+
+    // 3 sekunddan keyin yashirish
+    setTimeout(() => {
+        notification.classList.remove("show");
+    }, 3000);
+}
+
+function validateEmail(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+}
+
+sendBtn.addEventListener("click", async function () {
+    let email = emailInput.value.trim();
+
+    if (email === "") {
+        showNotification("Email kiriting!", false);
+        return;
+    }
+
+    if (!validateEmail(email)) {
+        showNotification("Email formati noto‘g‘ri!", false);
+        return;
+    }
+
+    try {
+        let response = await fetch("http://localhost:5000/save-email", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email })
+        });
+
+        let data = await response.json();
+
+        if (!data.success) {
+            showNotification(data.message, false);
+            return;
+        }
+
+        showNotification("Email muvaffaqiyatli saqlandi!", true);
+        emailInput.value = ""; // Email maydonini tozalash
+    } catch (error) {
+        showNotification("Server bilan bog‘lanishda xatolik!", false);
+    }
+});
+
+
+//ro'yhatdan o'tish
+

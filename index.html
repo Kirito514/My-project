@@ -22,12 +22,12 @@
       <div class="time-box"><span id="days">00</span>day</div>
       <div class="time-box"><span id="hours">00</span>hour</div>
       <div class="time-box"><span id="minutes">01</span>minut</div>
-      <div class="time-box"><span id="seconds">05</span>second</div>
+      <div class="time-box"><span id="seconds">01</span>second</div>
     </div>
     <form class="email-inp" id="emailForm">
       <input type="email" id="emailInput" placeholder="Notify me">
       <button class="send-btn" id="sendBtn" type="button">
-        <img src="images/icons/email.png" alt="mail">
+        <img src="images/icons/email.png" alt="">
       </button>
     </form>
     <section class="social">
@@ -66,15 +66,15 @@
       <form action="" class="sign-up-inp">
         <div>
           <img src="images/icons/user.png" alt="">
-          <input type="text" placeholder="Enter your name">
+          <input type="text" id="name" placeholder="Enter your name">
         </div>
         <div>
           <img src="images/icons/@.png" alt="">
-          <input type="email" placeholder="Type your e-mail or phone number">
+          <input type="email" id="email" placeholder="Type your e-mail or phone number">
         </div>
         <div>
           <img src="images/icons/lock.png" alt="">
-          <input type="password" placeholder="Type your password">
+          <input type="password" id="password" placeholder="Type your password">
         </div>
         <aside class="terms">
           <input type="checkbox" id="terms-checkbox">
@@ -103,7 +103,48 @@
   </div>
 
   <!-- Log in -->
-  <div class="log-in" style="display: none;"></div>
+  <div class="log-in" style="display: none;">
+    <div class="login-left-side">
+      <span>My Project’s</span>
+      <h2 class="login-side-title">Welcome Back, Please <br>
+        Login to Get started</h2>
+      <form action="" class="login-in-inp">
+        <div>
+          <img src="images/icons/user.png" alt="">
+          <input type="text" placeholder="Enter your name">
+        </div>
+        <div>
+          <img src="images/icons/lock.png" alt="">
+          <input type="password" placeholder="Type your password">
+        </div>
+        <aside class="login-check">
+          <input type="checkbox" id="terms-checkbox">
+          <label for="forgot">
+            <p>Remember me</p>
+            <a href="#">Forgot Password?</a>
+          </label>
+        </aside>
+        <button type="button" class="login-btn" id="login-btn"><a href="#">Back to home</a></button>
+        <button type="submit" class="sign-up-btn">Sign up</button>
+      </form>
+      <p class="alt-login-text">or do it via other accounts</p>
+
+      <form class="social-login">
+        <button class="social-btn" id="google-sign-up">
+          <img src="images/socials/google.png" alt="Google">
+        </button>
+        <button class="social-btn" id="apple-sign-up">
+          <img class="social-btn-apple" src="images/socials/apple.png" alt="Apple">
+        </button>
+        <button class="social-btn" id="github-sign-up">
+          <img src="images/socials/github.png" alt="GitHub">
+        </button>
+      </form>
+    </div>
+    <div class="login-right-side">
+      <img class="left-side-img" src="images/backgraund.jpg" alt="">
+    </div>
+  </div>
 
   <script src="js/index.js"></script>
 </body>

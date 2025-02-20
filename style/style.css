@@ -7,6 +7,7 @@
 }
 
 body {
+   background-color: grey;
    background-image: url(../images/backgraund.jpg);
    background-size: cover;
    background-position: center;
@@ -46,18 +47,20 @@ body {
 
 .notification {
    width: 330px;
-   height: 35px;
+   height: 40px;
    position: fixed;
-   top: -50px;
+   top: -60px; /* Animatsiyani ko'proq sezish uchun */
    left: 50%;
    transform: translateX(-50%);
-   background-color: #FFFFFF40;
-   border: 1px solid #EBEBEB80;
+   background-color: rgba(255, 255, 255, 0.4);
+   border: 1px solid rgba(235, 235, 235, 0.5);
    padding: 10px;
    border-radius: 20px;
-   transition: top 0.5s ease-in-out;
+   transition: top 0.7s ease-in-out, opacity 0.5s ease-in-out;
    z-index: 1000;
    display: flex;
+   align-items: center;
+   opacity: 0;
 }
 
 .notification p {
@@ -65,20 +68,26 @@ body {
    font-family: 'Inter-Medium';
    margin-left: 5px;
    color: white;
-   
 }
 
 .notification img {
    width: 24px;
    height: 24px;
-   position: relative;
-   margin-right: 4px;
-   margin-left: -4px;
-   top: -5.2px;
+   margin-right: 8px;
+   top: -5px;
 }
 
 .show {
    top: 20px;
+   opacity: 1;
+}
+
+.success {
+   background-color: #4caf4fda; /* ✅ Yashil */
+}
+
+.error {
+   background-color: #FF4D4D; /* ❌ Qizil */
 }
 
 .disabled {
@@ -155,6 +164,7 @@ body {
 #endedMessage button:hover {
    background: #FFFFFF70;
 }
+
 .email-inp {
    margin-top: 65px;
    /* border: 1px solid red; */
@@ -178,7 +188,7 @@ input::placeholder {
 
 .email-inp input:focus {
    background: #FFFFFF30;
-   border: 2px solid #FFFFFF; 
+   border: 2px solid #FFFFFF;
 }
 
 form {
@@ -391,7 +401,6 @@ input[type="checkbox"]:checked::before {
    transform: translate(-50%, -50%);
 }
 
-
 .sign-up-inp label {
    color: #FFFFFF50;
    font-size: 13px;
@@ -403,7 +412,7 @@ input[type="checkbox"]:checked::before {
    color: #FFFFFF80;
 }
 
-.sign-up-inp a:hover{
+.sign-up-inp a:hover {
    color: #FFFFFF;
 }
 
@@ -465,8 +474,10 @@ input[type="checkbox"]:checked::before {
 
 .sign-up-inp div:focus-within {
    background: #FFFFFF20;
-   border: 2px solid #FFFFFF; 
+   border: 2px solid #FFFFFF;
 }
+
+/* Log-in */
 
 .log-in {
    display: none;
@@ -477,4 +488,172 @@ input[type="checkbox"]:checked::before {
    justify-content: center;
    align-items: center;
    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%);
+}
+
+.login-left-side {
+   width: 930px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   /* flex-basis: 450px; */
+   padding: 15px 15px 15px 15px;
+   text-align: center;
+   color: #FFFFFF;
+   /* border: 1px solid red; */
+}
+
+.login-left-side span {
+   width: 146px;
+   height: 35px;
+   font-size: 24px;
+   color: #ffffff;
+   font-family: 'Merienda-Regular';
+   position: fixed;
+   top: 30px;
+   left: 35px;
+}
+
+.login-side-title {
+   width: 442px;
+   font-size: 36px;
+   margin-top: 70px;
+   font-family: 'RobotoMono-Medium';
+}
+
+.login-in-inp div {
+   position: relative;
+   width: 500px;
+   height: 50px;
+   margin-top: 20px;
+   border-radius: 30px;
+   background: #FFFFFF30;
+   border: 1px solid #EBEBEB75;
+   display: flex;
+   align-items: center;
+}
+
+.login-in-inp div:nth-child(1) {
+   margin-top: 55px;
+}
+
+.login-in-inp div::before {
+   content: "";
+   position: absolute;
+
+   width: 52px;
+   height: 100%;
+   background: rgba(255, 255, 255, 0.2);
+   border-top-left-radius: 30px;
+   border-bottom-left-radius: 30px;
+}
+
+.login-in-inp div img {
+   position: absolute;
+   left: 16px;
+   width: 22px;
+   height: 24px;
+   z-index: 1;
+}
+
+.login-in-inp div input {
+   flex: 1;
+   height: 100%;
+   font-size: 14px;
+   background: transparent;
+   color: #FFFFFF;
+   font-family: 'Inter-Medium';
+   padding-left: 80px;
+}
+
+.login-in-inp div input::placeholder {
+   font-size: 13px;
+   font-family: 'Inter-Medium';
+   color: #FFFFFF80;
+}
+
+.login-check {
+   width: 426px;
+   display: flex;
+   margin-top: 32px;
+   margin-left: 42px;
+   /* border: 1px solid red; */
+}
+
+.login-check label {
+   color: #FFFFFF50;
+   font-size: 13px;
+   font-family: 'Inter-Regular';
+   display: flex;
+   /* margin-left: 10px; */
+}
+
+.login-check label p {
+   margin-left: 15px;
+   margin-top: 7px;
+}
+
+.login-check a {
+   margin-left: 170px;
+   margin-top: 7px;
+   color: #FFFFFF80;
+   text-decoration: underline;
+}
+
+.login-check a:hover {
+   color: #FFFFFF;
+}
+
+.login-in-inp .sign-up-btn {
+   width: 120px;
+   height: 50px;
+   margin-left: 20px;
+   border-radius: 10px;
+   font-size: 17px;
+   font-family: 'Ubuntu-Medium';
+   color: #FFFFFF;
+   background: #FFFFFF40;
+}
+
+.login-in-inp button:hover {
+   background: #FFFFFF70;
+}
+
+.login-in-inp div:focus-within {
+   background: #FFFFFF20;
+   border: 2px solid #FFFFFF;
+}
+
+.alt-login-text {
+   margin-top: 70px;
+}
+
+.social-login {
+   margin-top: 30px;
+}
+
+.social-btn {
+   width: 64px;
+   height: 52px;
+   margin-left: 10px;
+   border-radius: 8px;
+   color: #FFFFFF;
+   background: #FFFFFF50;
+   border: 1px solid #EBEBEB50;
+}
+
+.social-btn-apple {
+   width: 25px;
+   margin-top: -1px;
+}
+
+.log-in button:hover {
+   background: #FFFFFF70;
+}
+
+.login-right-side {
+   width: auto;
+   height: auto;
+   padding-right: 15px;
+   /* border: 1px solid red; */
 }
