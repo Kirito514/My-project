@@ -100,52 +100,6 @@ function startCountdown() {
 
 window.onload = startCountdown;
 
-// Notification
-
-document.addEventListener("DOMContentLoaded", function () {
-    const notification = document.getElementById("notification");
-    const notifIcon = notification.querySelector("img");
-    const notifMessage = notification.querySelector("p");
-
-    function showNotification(message, isSuccess) {
-        notifMessage.textContent = message;
-        notifIcon.src = isSuccess ? "check.png" : "error.png";
-        notifIcon.style.display = "inline";
-        notification.classList.toggle("success", isSuccess);
-        notification.classList.add("show");
-
-        setTimeout(() => {
-            notification.classList.remove("show");
-        }, 3000);
-    }
-
-    document.getElementById("sendBtn").addEventListener("click", async function () {
-        let emailInput = document.getElementById("emailInput");
-        let email = emailInput.value.trim();
-
-        if (email === "") {
-            showNotification("Please enter an email.", false);
-            return;
-        }
-
-        try {
-            let response = await fetch("http://localhost:5000/save-email", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email })
-            });
-
-            let data = await response.json();
-            if (!data.success) throw new Error(data.message);
-
-            showNotification("Email has been successfully verified", true);
-            emailInput.value = "";
-        } catch (error) {
-            showNotification("An error occurred. Please try again.", false);
-        }
-    });
-});
-
 // Emailni emails.json ga jo'natish
 
 document.getElementById("sendBtn").addEventListener("click", async function () {
@@ -231,24 +185,28 @@ document.addEventListener("DOMContentLoaded", function () {
 // Notification elementlari
 const notification = document.getElementById("notification");
 const notifMessage = notification.querySelector("p");
-const emailInput = document.getElementById("emailInput");
-const sendBtn = document.getElementById("sendBtn");
 
 function showNotification(message, isSuccess) {
-    const notification = document.getElementById("notification");
-    const notifMessage = notification.querySelector("p");
-
     // Xabarni yangilash
     notifMessage.textContent = message;
 
     // Oldingi klasslarni olib tashlash
     notification.classList.remove("success", "error");
 
-    // Yangi klass qo'shish (yashil yoki qizil)
+    // Ikonkalarning ko‘rinishini to‘g‘rilash
+    const successIcon = notification.querySelector(".success-icon");
+    const errorIcon = notification.querySelector(".error-icon");
+
+    successIcon.style.display = "none";
+    errorIcon.style.display = "none";
+
+    // Yangi klass qo'shish va kerakli ikonkani chiqarish
     if (isSuccess) {
         notification.classList.add("success");
+        successIcon.style.display = "inline-block";
     } else {
         notification.classList.add("error");
+        errorIcon.style.display = "inline-block";
     }
 
     // Notificationni ko‘rsatish
@@ -259,6 +217,10 @@ function showNotification(message, isSuccess) {
         notification.classList.remove("show");
     }, 3000);
 }
+
+// Foydalanish misollari:
+// showNotification("Bu email allaqachon ro‘yxatdan o‘tgan!", false);
+// showNotification("Ro‘yxatdan muvaffaqiyatli o‘tildi!", true);
 
 function validateEmail(email) {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -301,4 +263,139 @@ sendBtn.addEventListener("click", async function () {
 
 
 //ro'yhatdan o'tish
+
+document.addEventListener("DOMContentLoaded", () => {
+    const registerBtn = document.querySelector(".register-btn");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const termsCheckbox = document.getElementById("terms-checkbox");
+
+    registerBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        // 📌 Inputlarni tekshirish
+        if (!nameInput.value || !emailInput.value || !passwordInput.value) {
+            showNotification("Barcha maydonlarni to‘ldiring!", false);
+            return;
+        }
+
+        if (!termsCheckbox.checked) {
+            showNotification("Ro‘yxatdan o‘tish uchun shartlarga rozilik bildiring!", false);
+            return;
+        }
+
+        if (passwordInput.value.length < 6) {
+            showNotification("Parol kamida 6 ta belgidan iborat bo‘lishi kerak!", false);
+            return;
+        }
+
+        // 📌 Foydalanuvchi ma'lumotlari
+        const userData = {
+            name: nameInput.value,
+            email: emailInput.value,
+            password: passwordInput.value,
+            termsAccepted: termsCheckbox.checked
+        };
+
+        // 📌 Backendga so‘rov yuborish
+        fetch("http://localhost:5000/sign-up", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(userData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                showNotification(data.message, data.success);
+
+                if (data.success) {
+                    nameInput.value = "";
+                    emailInput.value = "";
+                    passwordInput.value = "";
+                    termsCheckbox.checked = false;
+                }
+            })
+            .catch(error => {
+                showNotification("Server bilan bog‘lanishda xatolik!", false);
+                console.error(error);
+            });
+    });
+});
+
+// 📌 Notification funksiyasi
+function showNotification(message, isSuccess) {
+    const notification = document.getElementById("notification");
+    const notifMessage = notification.querySelector("p");
+    const successIcon = notification.querySelector(".success-icon");
+    const errorIcon = notification.querySelector(".error-icon");
+
+    // Xabarni yangilash
+    notifMessage.textContent = message;
+
+    // Oldingi klasslarni olib tashlash
+    notification.classList.remove("success", "error");
+
+    // Ikonkalarning ko‘rinishini to‘g‘rilash
+    successIcon.style.display = "none";
+    errorIcon.style.display = "none";
+
+    // Yangi klass qo'shish va ikonka ko‘rsatish
+    if (isSuccess) {
+        notification.classList.add("success");
+        successIcon.style.display = "inline-block";
+    } else {
+        notification.classList.add("error");
+        errorIcon.style.display = "inline-block";
+    }
+
+    // Notificationni ko‘rsatish
+    notification.classList.add("show");
+
+    // 3 sekunddan keyin yashirish
+    setTimeout(() => {
+        notification.classList.remove("show");
+    }, 3000);
+}
+
+// 👁 Parolni ko‘rsatish/yashirish
+document.getElementById("togglePassword").addEventListener("click", function () {
+    let passwordInput = document.getElementById("password");
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        this.textContent = "🙈";
+    } else {
+        passwordInput.type = "password";
+        this.textContent = "🐵";
+    }
+});
+
+// 📌 Parol kuchliligini tekshirish
+document.getElementById("password").addEventListener("input", function () {
+    let password = this.value;
+    let strengthMessage = document.getElementById("strengthMessage");
+
+    if (password.length < 8) {
+        strengthMessage.innerHTML = "⚠️ Juda zaif (kamida 8 ta belgi kerak)";
+        strengthMessage.style.color = "red";
+    } else if (!/[A-Z]/.test(password) || !/[0-9]/.test(password) || !/[!@#$%^&*]/.test(password)) {
+        strengthMessage.innerHTML = "⚠️ O‘rtacha (raqam va maxsus belgi qo‘shing)";
+        strengthMessage.style.color = "orange";
+    } else {
+        strengthMessage.innerHTML = "✅ Kuchli parol!";
+        strengthMessage.style.color = "green";
+    }
+});
+
+// 🔄 Tasodifiy kuchli parol yaratish
+document.getElementById("generatePassword").addEventListener("click", function () {
+    let characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+    let password = "";
+    for (let i = 0; i < 12; i++) {
+        password += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    document.getElementById("password").value = password;
+    
+    // 📢 Notification o‘rniga console log chiqarish
+    console.log("✅ Kuchli parol yaratildi!");    
+});
 

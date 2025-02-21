@@ -9,19 +9,22 @@
 </head>
 
 <body>
+
+  <div id="notification" class="notification">
+    <img src="images/icons/check.png" class="success-icon" alt="Success">
+    <img src="images/icons/error.png" class="error-icon" alt="Error">
+    <p id="notification-message"></p>
+  </div>
+
   <div class="container">
     <p class="title">
       Welcome to the <br> <span>My Project’s</span> | Platform
     </p>
-    <div id="notification" class="notification">
-      <img src="images/icons/check.png" alt="check">
-      <p>Email has been successfully verified</p>
-    </div>
 
     <div class="time">
       <div class="time-box"><span id="days">00</span>day</div>
       <div class="time-box"><span id="hours">00</span>hour</div>
-      <div class="time-box"><span id="minutes">01</span>minut</div>
+      <div class="time-box"><span id="minutes">00</span>minut</div>
       <div class="time-box"><span id="seconds">01</span>second</div>
     </div>
     <form class="email-inp" id="emailForm">
@@ -55,6 +58,7 @@
     <button type="button"><a href="#">Sign Up</a></button>
   </div>
 
+  <!-- Sign up -->
   <div class="sign-up">
     <div class="left-side">
       <span>My Project’s</span>
@@ -64,18 +68,33 @@
       <h1 class="side-title">Create your account</h1>
       <h2 class="side-title-2">It's free and easy</h2>
       <form action="" class="sign-up-inp">
-        <div>
+
+        <!-- Ism kiritish -->
+        <div class="input-container">
           <img src="images/icons/user.png" alt="">
           <input type="text" id="name" placeholder="Enter your name">
         </div>
-        <div>
+
+        <!-- Email kiritish -->
+        <div class="input-container">
           <img src="images/icons/@.png" alt="">
           <input type="email" id="email" placeholder="Type your e-mail or phone number">
         </div>
-        <div>
+
+        <!-- Parol kiritish -->
+        <div class="input-container password-container">
           <img src="images/icons/lock.png" alt="">
           <input type="password" id="password" placeholder="Type your password">
+          <button type="button" id="togglePassword">🐵</button>
         </div>
+
+        <!-- Parol kuchliligini chiqarish -->
+        <p id="strengthMessage"></p>
+
+        <!-- Tasodifiy parol yaratish tugmasi -->
+        <button type="button" id="generatePassword">🔄 Tasodifiy parol yaratish</button>
+
+        <!-- Foydalanuvchi shartlarga rozilik bildirish -->
         <aside class="terms">
           <input type="checkbox" id="terms-checkbox">
           <label for="terms-checkbox">
@@ -83,11 +102,19 @@
             <a href="#">Terms and Conditions</a>, and our <a href="#">Privacy Policy</a>
           </label>
         </aside>
-        <button type="submit" class="register-btn">Register</button>
-        <button type="button" class="login-btn" id="login-btn"><a href="#">Back to home</a></button>
-      </form>
-      <p class="alt-login-text">or do it via other accounts</p>
 
+        <!-- Ro‘yxatdan o‘tish tugmasi -->
+        <button type="submit" class="register-btn">Register</button>
+
+        <!-- Orqaga qaytish tugmasi -->
+        <button type="button" class="login-btn" id="login-btn">
+          <a href="#">Back to home</a>
+        </button>
+
+      </form>
+
+      <!-- Boshqa hisoblar bilan kirish -->
+      <p class="alt-login-text">or do it via other accounts</p>
       <form class="social-sign-up">
         <button class="social-btn" id="google-sign-up">
           <img src="images/socials/google.png" alt="Google">
@@ -101,6 +128,7 @@
       </form>
     </div>
   </div>
+
 
   <!-- Log in -->
   <div class="log-in" style="display: none;">

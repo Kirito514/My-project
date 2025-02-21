@@ -19,6 +19,16 @@ body {
    flex-direction: column;
 }
 
+body input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+   -webkit-text-fill-color: #ffffff !important;
+   -webkit-background-origin: none;
+   /* Matn rangi oq bo‘lishi uchun */
+   transition: background-color 5000s ease-in-out 0s;
+}
+
+
 .container {
    width: 100vw;
    height: 100vh;
@@ -46,21 +56,26 @@ body {
 }
 
 .notification {
-   width: 330px;
-   height: 40px;
    position: fixed;
-   top: -60px; /* Animatsiyani ko'proq sezish uchun */
+   top: -60px;
    left: 50%;
    transform: translateX(-50%);
-   background-color: rgba(255, 255, 255, 0.4);
-   border: 1px solid rgba(235, 235, 235, 0.5);
-   padding: 10px;
+   width: auto;
+   min-width: 300px;
+   height: 40px;
+   padding: 10px 15px;
    border-radius: 20px;
-   transition: top 0.7s ease-in-out, opacity 0.5s ease-in-out;
-   z-index: 1000;
+   font-size: 16px;
+   color: white;
    display: flex;
    align-items: center;
+   gap: 10px;
+   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+   border: 1px solid rgba(235, 235, 235, 0.5);
+   background-color: rgba(255, 255, 255, 0.4);
    opacity: 0;
+   transition: top 0.7s ease-in-out, opacity 0.5s ease-in-out;
+   z-index: 1000;
 }
 
 .notification p {
@@ -70,30 +85,40 @@ body {
    color: white;
 }
 
-.notification img {
-   width: 24px;
-   height: 24px;
-   margin-right: 8px;
-   top: -5px;
-}
-
-.show {
+/* Animatsiya bilan ko‘rinadigan bo‘lishi */
+.notification.show {
    top: 20px;
    opacity: 1;
 }
 
-.success {
-   background-color: #4caf4fda; /* ✅ Yashil */
+/* Muvaffaqiyatli xabar uchun yashil fon */
+.notification.success {
+   background-color: rgba(255, 255, 255, 0.4);
 }
 
-.error {
-   background-color: #FF4D4D; /* ❌ Qizil */
+/* Xatolik xabari uchun qizil fon */
+.notification.error {
+   background-color: rgba(255, 0, 0, 0.4);
 }
 
-.disabled {
-   opacity: 1;
-   cursor: not-allowed;
+/* Ikonkalarni stil qilish */
+.notification img {
+   width: 24px;
+   height: 24px;
+   display: none;
+   /* Barcha ikonlarni dastlab yashiramiz */
 }
+
+/* Success holatda faqat yashil ikonka chiqadi */
+.notification.success .success-icon {
+   display: inline-block;
+}
+
+/* Error holatda faqat qizil ikonka chiqadi */
+.notification.error .error-icon {
+   display: inline-block;
+}
+
 
 .time {
    width: 780px;
@@ -416,10 +441,51 @@ input[type="checkbox"]:checked::before {
    color: #FFFFFF;
 }
 
+/* generatsiya parol */
+
+.password-container {
+   position: relative;
+   display: flex;
+   align-items: center;
+   width: 100%;
+}
+
+.password-container input {
+   flex: 1;
+   padding: 10px;
+   padding-right: 40px;
+   border-radius: 5px;
+   /* border: 1px solid #ccc; */
+   font-size: 16px;
+}
+
+.password-container button {
+   width: auto;
+   position: absolute;
+   right: 10px;
+   background: none;
+   border: none;
+   cursor: pointer;
+   font-size: 16px;
+   color: #ffffff;
+}
+
+#generatePassword {
+   padding: 7px;
+   border-radius: 20px;
+   margin-top: 15px;
+   background: #FFFFFF40;
+   font-size: 12px;
+   font-family: 'Ubuntu-Medium';
+   color: #FFFFFF;
+}
+
+/* generatsiya uchun */
+
 .register-btn {
    width: 180px;
    height: 50px;
-   margin-top: 35px;
+   margin-top: 20px;
    border-radius: 10px;
    font-size: 17px;
    font-family: 'Ubuntu-Medium';
@@ -430,7 +496,7 @@ input[type="checkbox"]:checked::before {
 .login-btn {
    width: 180px;
    height: 50px;
-   margin-top: 35px;
+   margin-top: 20px;
    border-radius: 10px;
    background: #FFFFFF40;
 }
@@ -450,7 +516,7 @@ input[type="checkbox"]:checked::before {
 }
 
 .social-sign-up {
-   margin-top: 30px;
+   margin-top: 20px;
 }
 
 .social-btn {
@@ -472,9 +538,17 @@ input[type="checkbox"]:checked::before {
    background: #FFFFFF70;
 }
 
+#generatePassword:hover {
+   background: #FFFFFF70;
+}
+
 .sign-up-inp div:focus-within {
    background: #FFFFFF20;
    border: 2px solid #FFFFFF;
+}
+
+.sign-up .password-container button:hover {
+   background: none;
 }
 
 /* Log-in */
