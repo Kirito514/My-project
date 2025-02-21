@@ -52,7 +52,10 @@ document.querySelector("#endedMessage button").addEventListener("click", functio
 });
 
 // **Agar sahifa yangilansa, doim bosh sahifa ko‘rinsin**
-window.location.hash = "";
+function updateURL(hash) {
+    window.location.hash = "";
+}
+
 
 // "Back" va "Forward" tugmalarini qo‘llab-quvvatlash
 window.addEventListener("hashchange", showPageFromURL);
@@ -369,22 +372,22 @@ document.getElementById("togglePassword").addEventListener("click", function () 
     }
 });
 
-// 📌 Parol kuchliligini tekshirish
-document.getElementById("password").addEventListener("input", function () {
-    let password = this.value;
-    let strengthMessage = document.getElementById("strengthMessage");
+// // 📌 Parol kuchliligini tekshirish
+// document.getElementById("password").addEventListener("input", function () {
+//     let password = this.value;
+//     let strengthMessage = document.getElementById("strengthMessage");
 
-    if (password.length < 8) {
-        strengthMessage.innerHTML = "⚠️ Juda zaif (kamida 8 ta belgi kerak)";
-        strengthMessage.style.color = "red";
-    } else if (!/[A-Z]/.test(password) || !/[0-9]/.test(password) || !/[!@#$%^&*]/.test(password)) {
-        strengthMessage.innerHTML = "⚠️ O‘rtacha (raqam va maxsus belgi qo‘shing)";
-        strengthMessage.style.color = "orange";
-    } else {
-        strengthMessage.innerHTML = "✅ Kuchli parol!";
-        strengthMessage.style.color = "green";
-    }
-});
+//     if (password.length < 8) {
+//         strengthMessage.innerHTML = "⚠️ Juda zaif (kamida 8 ta belgi kerak)";
+//         strengthMessage.style.color = "red";
+//     } else if (!/[A-Z]/.test(password) || !/[0-9]/.test(password) || !/[!@#$%^&*]/.test(password)) {
+//         strengthMessage.innerHTML = "⚠️ O‘rtacha (raqam va maxsus belgi qo‘shing)";
+//         strengthMessage.style.color = "orange";
+//     } else {
+//         strengthMessage.innerHTML = "✅ Kuchli parol!";
+//         strengthMessage.style.color = "green";
+//     }
+// });
 
 // 🔄 Tasodifiy kuchli parol yaratish
 document.getElementById("generatePassword").addEventListener("click", function () {
@@ -394,8 +397,60 @@ document.getElementById("generatePassword").addEventListener("click", function (
         password += characters.charAt(Math.floor(Math.random() * characters.length));
     }
     document.getElementById("password").value = password;
-    
+
     // 📢 Notification o‘rniga console log chiqarish
-    console.log("✅ Kuchli parol yaratildi!");    
+    console.log("✅ Kuchli parol yaratildi!");
 });
 
+// Logim qilish 
+
+document.getElementById("back-to-home").addEventListener("click", async function (event) {
+    event.preventDefault();
+
+    let emailInput = document.getElementById("login-email").value.trim();
+    let passwordInput = document.getElementById("login-password").value.trim();
+
+    if (!emailInput || !passwordInput) {
+        showNotification("Email va parolni kiriting!", false);
+        return;
+    }
+
+    try {
+        let response = await fetch("js/users.json");
+        let users = await response.json();
+
+        let user = users.find(user => user.email === emailInput && user.password === passwordInput);
+
+        if (!user) {
+            showNotification("Email yoki parol noto‘g‘ri!", false);
+            return;
+        }
+
+        showNotification("Muvaffaqiyatli login qilindi!", true);
+
+        // Login muvaffaqiyatli bo‘lsa, sahifani almashtirish
+        document.querySelector(".log-in").style.display = "none";
+        document.querySelector(".dashboard").style.display = "block";
+
+    } catch (error) {
+        showNotification("Server bilan bog‘lanishda xatolik!", false);
+        console.error(error);
+    }
+
+});
+
+// Log out qilish
+
+document.getElementById("logout-btn").addEventListener("click", function () {
+    // Dashboardni yashirish, login sahifasini ko‘rsatish
+    document.querySelector(".dashboard").style.display = "none";
+    document.querySelector(".log-in").style.display = "flex";
+
+    // Sahifadagi barcha inputlarni tozalaymiz
+    document.querySelectorAll("input").forEach(input => input.value = "");
+
+    // Notification chiqaramiz
+    showNotification("Muvaffaqiyatli chiqdingiz!", true);
+});
+
+// Sessiya ma'lumotlarini o‘chiramiz
