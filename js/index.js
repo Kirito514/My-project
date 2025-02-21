@@ -1,4 +1,3 @@
-
 // Sahifa ochilganda linklarni tekshirish
 showPageFromURL();
 
@@ -402,8 +401,7 @@ document.getElementById("generatePassword").addEventListener("click", function (
     console.log("✅ Kuchli parol yaratildi!");
 });
 
-// Logim qilish 
-
+// Login qilish 
 document.getElementById("back-to-home").addEventListener("click", async function (event) {
     event.preventDefault();
 
@@ -428,16 +426,18 @@ document.getElementById("back-to-home").addEventListener("click", async function
 
         showNotification("Muvaffaqiyatli login qilindi!", true);
 
+        // Foydalanuvchi ma’lumotlarini saqlash (shunda sahifa yangilansa ham login holati saqlanadi)
+        localStorage.setItem("loggedInUser", JSON.stringify(user));
+
         // Login muvaffaqiyatli bo‘lsa, sahifani almashtirish
-        document.querySelector(".log-in").style.display = "none";
-        document.querySelector(".dashboard").style.display = "block";
+        checkLoginStatus();
 
     } catch (error) {
         showNotification("Server bilan bog‘lanishda xatolik!", false);
         console.error(error);
     }
-
 });
+
 
 // Log out qilish
 
@@ -446,6 +446,10 @@ document.getElementById("logout-btn").addEventListener("click", function () {
     document.querySelector(".dashboard").style.display = "none";
     document.querySelector(".log-in").style.display = "flex";
 
+    // LocalStorage va SessionStorage tozalanadi
+    localStorage.removeItem("loggedInUser");
+    sessionStorage.removeItem("loggedInUser");
+
     // Sahifadagi barcha inputlarni tozalaymiz
     document.querySelectorAll("input").forEach(input => input.value = "");
 
@@ -453,4 +457,30 @@ document.getElementById("logout-btn").addEventListener("click", function () {
     showNotification("Muvaffaqiyatli chiqdingiz!", true);
 });
 
-// Sessiya ma'lumotlarini o‘chiramiz
+
+// Login holatini tekshirish
+function checkLoginStatus() {
+    const user = localStorage.getItem("loggedInUser");
+
+    if (user) {
+        // Faqat dashboard ko'rsatiladi
+        document.querySelector(".dashboard").style.display = "block";
+
+        // Barcha boshqa sahifalarni yashiramiz
+        document.querySelector(".log-in").style.display = "none";
+        document.querySelector(".sign-up").style.display = "none";
+        document.querySelector(".container").style.display = "none";
+        document.querySelector("#endedMessage").style.display = "none";
+
+    } else {
+        // Foydalanuvchi login qilmagan bo‘lsa, login sahifasi ochiladi
+        document.querySelector(".dashboard").style.display = "none";
+        document.querySelector(".log-in").style.display = "flex";
+        document.querySelector(".sign-up").style.display = "none";
+        document.querySelector(".container").style.display = "none";
+        document.querySelector("#endedMessage").style.display = "none";
+    }
+}
+
+// Sahifa yangilanganda login holatini tekshiramiz
+document.addEventListener("DOMContentLoaded", checkLoginStatus);
