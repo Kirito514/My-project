@@ -464,7 +464,7 @@ function checkLoginStatus() {
 
     if (user) {
         // Faqat dashboard ko'rsatiladi
-        document.querySelector(".dashboard").style.display = "block";
+        document.querySelector(".dashboard").style.display = "flex";
 
         // Barcha boshqa sahifalarni yashiramiz
         document.querySelector(".log-in").style.display = "none";
@@ -483,4 +483,4 @@ function checkLoginStatus() {
 }
 
 // Sahifa yangilanganda login holatini tekshiramiz
-document.addEventListener("DOMContentLoaded", checkLoginStatus);
+// document.addEventListener("DOMContentLoaded", checkLoginStatus);
