@@ -1,205 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My-project | Platform</title>
+        <link rel="stylesheet" href="style/style.css" />
+    </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My-project | Platform</title>
-  <link rel="stylesheet" href="style/style.css">
-</head>
-
-<body>
-
-  <div id="notification" class="notification">
-    <img src="images/icons/check.png" class="success-icon" alt="Success">
-    <img src="images/icons/error.png" class="error-icon" alt="Error">
-    <p id="notification-message"></p>
-  </div>
-
-  <div class="container" style="display: none;">
-    <p class="title">
-      Welcome to the <br> <span>My Project’s</span> | Platform
-    </p>
-
-    <div class="time">
-      <div class="time-box"><span id="days">00</span>day</div>
-      <div class="time-box"><span id="hours">00</span>hour</div>
-      <div class="time-box"><span id="minutes">00</span>minut</div>
-      <div class="time-box"><span id="seconds">01</span>second</div>
-    </div>
-    <form class="email-inp" id="emailForm">
-      <input type="email" id="emailInput" placeholder="Notify me">
-      <button class="send-btn" id="sendBtn" type="button">
-        <img src="images/icons/email.png" alt="">
-      </button>
-    </form>
-    <section class="social">
-      <h6>Our other social networks</h6>
-      <ul class="networks">
-        <li>
-          <a href="https://t.me/my_project_platform"><img src="images/socials/telegram.png" alt="telegram"></a>
-        </li>
-        <li>
-          <a href="#"><img src="images/socials/x.png" alt="twitter"></a>
-        </li>
-        <li>
-          <a href="#"><img src="images/socials/discord.png" alt="discord"></a>
-        </li>
-      </ul>
-    </section>
-  </div>
-
-  <div id="endedMessage" style="display: none;">
-    <h1>Countdown Ended! 🎉</h1>
-    <p>Congratulations! The moment you've been eagerly anticipating has finally arrived. Our platform is now officially
-      live, opening up endless possibilities for you to embark on your journey, explore exciting new projects, and
-      collaborate seamlessly with your team. Join us today and be part of something bigger—where creativity meets
-      opportunity, and dreams turn into reality! 🚀✨</p>
-    <button type="button"><a href="#">Sign Up</a></button>
-  </div>
-
-  <!-- Sign up -->
-  <div class="sign-up">
-    <div class="left-side">
-      <span>My Project’s</span>
-      <img class="left-side-img" src="images/backgraund.jpg" alt="">
-    </div>
-    <div class="right-side">
-      <h1 class="side-title">Create your account</h1>
-      <h2 class="side-title-2">It's free and easy</h2>
-      <form action="" class="sign-up-inp">
-
-        <!-- Ism kiritish -->
-        <div class="input-container">
-          <img src="images/icons/user.png" alt="">
-          <input type="text" id="name" placeholder="Enter your name">
+    <body>
+        <div id="notification" class="notification">
+            <img
+                src="images/icons/check.png"
+                class="success-icon"
+                alt="Success"
+            />
+            <img src="images/icons/error.png" class="error-icon" alt="Error" />
+            <p id="notification-message"></p>
         </div>
 
-        <!-- Email kiritish -->
-        <div class="input-container">
-          <img src="images/icons/@.png" alt="">
-          <input type="email" id="email" placeholder="Type your e-mail or phone number">
+        <div class="container" style="display: none">
+            <p class="title">
+                Welcome to the <br />
+                <span>My Project’s</span> | Platform
+            </p>
+
+            <div class="time">
+                <div class="time-box"><span id="days">00</span>day</div>
+                <div class="time-box"><span id="hours">00</span>hour</div>
+                <div class="time-box"><span id="minutes">00</span>minut</div>
+                <div class="time-box"><span id="seconds">01</span>second</div>
+            </div>
+            <form class="email-inp" id="emailForm">
+                <input type="email" id="emailInput" placeholder="Notify me" />
+                <button class="send-btn" id="sendBtn" type="button">
+                    <img src="images/icons/email.png" alt="" />
+                </button>
+            </form>
+            <section class="social">
+                <h6>Our other social networks</h6>
+                <ul class="networks">
+                    <li>
+                        <a href="https://t.me/my_project_platform"
+                            ><img
+                                src="images/socials/telegram.png"
+                                alt="telegram"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><img src="images/socials/x.png" alt="twitter"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><img
+                                src="images/socials/discord.png"
+                                alt="discord"
+                        /></a>
+                    </li>
+                </ul>
+            </section>
         </div>
 
-        <!-- Parol kiritish -->
-        <div class="input-container password-container">
-          <img src="images/icons/lock.png" alt="">
-          <input type="password" id="password" placeholder="Type your password">
-          <button type="button" id="togglePassword">🐵</button>
+        <div id="endedMessage" style="display: none">
+            <h1>Countdown Ended! 🎉</h1>
+            <p>
+                Congratulations! The moment you've been eagerly anticipating has
+                finally arrived. Our platform is now officially live, opening up
+                endless possibilities for you to embark on your journey, explore
+                exciting new projects, and collaborate seamlessly with your
+                team. Join us today and be part of something bigger—where
+                creativity meets opportunity, and dreams turn into reality! 🚀✨
+            </p>
+            <button type="button"><a href="#">Sign Up</a></button>
         </div>
 
-        <!-- Parol kuchliligini chiqarish -->
-        <p id="strengthMessage"></p>
+        <!-- Sign up -->
+        <div class="sign-up">
+            <div class="left-side">
+                <span>My Project’s</span>
+                <img class="left-side-img" src="images/backgraund.jpg" alt="" />
+            </div>
+            <div class="right-side">
+                <h1 class="side-title">Create your account</h1>
+                <h2 class="side-title-2">It's free and easy</h2>
+                <form action="" class="sign-up-inp">
+                    <!-- Ism kiritish -->
+                    <div class="input-container">
+                        <img src="images/icons/user.png" alt="" />
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your name"
+                        />
+                    </div>
 
-        <!-- Tasodifiy parol yaratish tugmasi -->
-        <button type="button" id="generatePassword">🔄 Tasodifiy parol yaratish</button>
+                    <!-- Email kiritish -->
+                    <div class="input-container">
+                        <img src="images/icons/@.png" alt="" />
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Type your e-mail or phone number"
+                        />
+                    </div>
 
-        <!-- Foydalanuvchi shartlarga rozilik bildirish -->
-        <aside class="terms">
-          <input type="checkbox" id="terms-checkbox">
-          <label for="terms-checkbox">
-            By creating an account means you agree to the
-            <a href="#">Terms and Conditions</a>, and our <a href="#">Privacy Policy</a>
-          </label>
-        </aside>
+                    <!-- Parol kiritish -->
+                    <div class="input-container password-container">
+                        <img src="images/icons/lock.png" alt="" />
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Type your password"
+                        />
+                        <button type="button" id="togglePassword">🐵</button>
+                    </div>
 
-        <!-- Ro‘yxatdan o‘tish tugmasi -->
-        <button type="submit" class="register-btn">Create account</button>
+                    <!-- Parol kuchliligini chiqarish -->
+                    <p id="strengthMessage"></p>
 
-        <!-- Orqaga qaytish tugmasi -->
-        <button type="button" class="login-btn" id="login-btn">
-          <a href="#">Back to home</a>
-        </button>
+                    <!-- Tasodifiy parol yaratish tugmasi -->
+                    <button type="button" id="generatePassword">
+                        🔄 Tasodifiy parol yaratish
+                    </button>
 
-      </form>
+                    <!-- Foydalanuvchi shartlarga rozilik bildirish -->
+                    <aside class="terms">
+                        <input type="checkbox" id="terms-checkbox" />
+                        <label for="terms-checkbox">
+                            By creating an account means you agree to the
+                            <a href="#">Terms and Conditions</a>, and our
+                            <a href="#">Privacy Policy</a>
+                        </label>
+                    </aside>
 
-      <!-- Boshqa hisoblar bilan kirish -->
-      <p class="alt-login-text">or do it via other accounts</p>
-      <form class="social-sign-up">
-        <button class="social-btn" id="google-sign-up">
-          <img src="images/socials/google.png" alt="Google">
-        </button>
-        <button class="social-btn" id="apple-sign-up">
-          <img class="social-btn-apple" src="images/socials/apple.png" alt="Apple">
-        </button>
-        <button class="social-btn" id="github-sign-up">
-          <img src="images/socials/github.png" alt="GitHub">
-        </button>
-      </form>
-    </div>
-  </div>
+                    <!-- Ro‘yxatdan o‘tish tugmasi -->
+                    <button type="submit" class="register-btn">
+                        Create account
+                    </button>
 
+                    <!-- Orqaga qaytish tugmasi -->
+                    <button type="button" class="login-btn" id="login-btn">
+                        <a href="#">Back to home</a>
+                    </button>
+                </form>
 
-  <!-- Log in -->
-  <div class="log-in" style="display: none;">
-    <div class="login-left-side">
-      <span>My Project’s</span>
-      <h2 class="login-side-title">Welcome Back, Please <br>
-        Login to Get started</h2>
-      <form action="" class="login-in-inp">
-        <div>
-          <img src="images/icons/user.png" alt="">
-          <input id="login-email" type="text" placeholder="Enter your name">
+                <!-- Boshqa hisoblar bilan kirish -->
+                <p class="alt-login-text">or do it via other accounts</p>
+                <form class="social-sign-up">
+                    <button class="social-btn" id="google-sign-up">
+                        <img src="images/socials/google.png" alt="Google" />
+                    </button>
+                    <button class="social-btn" id="apple-sign-up">
+                        <img
+                            class="social-btn-apple"
+                            src="images/socials/apple.png"
+                            alt="Apple"
+                        />
+                    </button>
+                    <button class="social-btn" id="github-sign-up">
+                        <img src="images/socials/github.png" alt="GitHub" />
+                    </button>
+                </form>
+            </div>
         </div>
-        <div>
-          <img src="images/icons/lock.png" alt="">
-          <input id="login-password" type="password" placeholder="Type your password">
+
+        <!-- Log in -->
+        <div class="log-in" style="display: none">
+            <div class="login-left-side">
+                <span>My Project’s</span>
+                <h2 class="login-side-title">
+                    Welcome Back, Please <br />
+                    Login to Get started
+                </h2>
+                <form action="" class="login-in-inp">
+                    <div>
+                        <img src="images/icons/user.png" alt="" />
+                        <input
+                            id="login-email"
+                            type="text"
+                            placeholder="Enter your name"
+                        />
+                    </div>
+                    <div>
+                        <img src="images/icons/lock.png" alt="" />
+                        <input
+                            id="login-password"
+                            type="password"
+                            placeholder="Type your password"
+                        />
+                    </div>
+                    <aside class="login-check">
+                        <input type="checkbox" id="terms-checkbox" />
+                        <label for="forgot">
+                            <p>Remember me</p>
+                            <a href="#">Forgot Password?</a>
+                        </label>
+                    </aside>
+                    <button type="button" class="login-btn" id="back-to-home">
+                        <a href="#">Back to home</a>
+                    </button>
+                    <button type="submit" class="sign-up-btn">Sign up</button>
+                </form>
+                <p class="alt-login-text">or do it via other accounts</p>
+
+                <form class="social-login">
+                    <button class="social-btn" id="google-sign-up">
+                        <img src="images/socials/google.png" alt="Google" />
+                    </button>
+                    <button class="social-btn" id="apple-sign-up">
+                        <img
+                            class="social-btn-apple"
+                            src="images/socials/apple.png"
+                            alt="Apple"
+                        />
+                    </button>
+                    <button class="social-btn" id="github-sign-up">
+                        <img src="images/socials/github.png" alt="GitHub" />
+                    </button>
+                </form>
+            </div>
+            <div class="login-right-side">
+                <img class="left-side-img" src="images/backgraund.jpg" alt="" />
+            </div>
         </div>
-        <aside class="login-check">
-          <input type="checkbox" id="terms-checkbox">
-          <label for="forgot">
-            <p>Remember me</p>
-            <a href="#">Forgot Password?</a>
-          </label>
-        </aside>
-        <button type="button" class="login-btn" id="back-to-home"><a href="#">Back to home</a></button>
-        <button type="submit" class="sign-up-btn">Sign up</button>
-      </form>
-      <p class="alt-login-text">or do it via other accounts</p>
 
-      <form class="social-login">
-        <button class="social-btn" id="google-sign-up">
-          <img src="images/socials/google.png" alt="Google">
-        </button>
-        <button class="social-btn" id="apple-sign-up">
-          <img class="social-btn-apple" src="images/socials/apple.png" alt="Apple">
-        </button>
-        <button class="social-btn" id="github-sign-up">
-          <img src="images/socials/github.png" alt="GitHub">
-        </button>
-      </form>
-    </div>
-    <div class="login-right-side">
-      <img class="left-side-img" src="images/backgraund.jpg" alt="">
-    </div>
-  </div>
-
-  <!-- Dashboard -->
-  <div class="dashboard" style="display: none;">
-    <div class="tab-panel">
-      
-    </div>
-    <div class="center-count">
-      <header>
-        <div class="search-div">
-          <input type="search" name="search" id="search" placeholder="search">
-          <button id="search-btn">
-            <img src="images/icons/search.png" alt="search">
-          </button>
+        <!-- Dashboard -->
+        <div class="dashboard" style="display: none">
+            <div class="tab-panel"></div>
+            <div class="center-count">
+                <header>
+                    <div class="search-div">
+                        <input
+                            type="search"
+                            name="search"
+                            id="search"
+                            placeholder="search"
+                        />
+                        <button id="search-btn">
+                            <img src="images/icons/search.png" alt="search" />
+                        </button>
+                    </div>
+                    <h1 class="dash-title">Dashboard</h1>
+                    <div class="add-count"></div>
+                    <div class="grids">
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                        <div class="block"></div>
+                    </div>
+                </header>
+            </div>
         </div>
-        <h1 class="dash-title">Dashboard</h1>
-        <div class="add-count"></div>
-        <div class="grids">
-          <div class="block"></div>
-          <div class="block"></div>
-          <div class="block"></div>
-          <div class="block"></div>
-        </div>
-      </header>
-    </div>
-  </div>
 
-  <script src="js/index.js"></script>
-</body>
-
+        <script src="js/index.js"></script>
+    </body>
 </html>

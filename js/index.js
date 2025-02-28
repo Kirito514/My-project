@@ -1,7 +1,6 @@
 // Sahifa ochilganda linklarni tekshirish
 showPageFromURL();
 
-
 // Sahifa yuklanganda to‘g‘ri sahifani ko‘rsatish
 function showPageFromURL() {
     const page = window.location.hash.replace("#", "");

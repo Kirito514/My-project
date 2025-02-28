@@ -852,7 +852,6 @@ input[type="checkbox"]:checked::before {
    max-height: 400px;
 }
 
-
 .grids .block {
    width: 290px;
    height: 200px;
